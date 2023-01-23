@@ -1,0 +1,95 @@
+1.Configuracion y Dependencias
+
+    1.1Se agregan las dependencias de RecyclerView y CardView
+
+        implementation "androidx.recyclerview:recyclerview:1.1.0"
+        implementation "androidx.cardview:cardview:1.0.0"
+
+   1.2.Tambien se agrega el plugin para el procesador de anotaciones 'kotlin-kapt'
+
+        plugins {
+            id 'com.android.application'
+            id 'org.jetbrains.kotlin.android'
+            id 'kotlin-kapt'
+        }
+
+    1.3.Se especifica el Gradle JDK 11:
+
+            File - Settings - Build, Execution, Development - Build Tools - Gradle
+
+    1.4.Agregar al build.gradle del proyecto
+
+            buildscript {
+                dependencies {
+                    classpath "com.android.tools.build:gradle:7.2.1"
+
+                    // NOTE: Do not place your application dependencies here; they belong
+                    // in the individual module build.gradle files
+                }
+            }
+
+    1.5.En el archivo build.gradle una vez generado el proyecto se cambio la version 32 por 33
+        en compileSdk 33 y en targetSdk 33
+
+            android {
+                compileSdk 33
+
+                defaultConfig {
+                    applicationId "com.chelo.mentoringperficientlinkv1"
+                    minSdk 21
+                    targetSdk 33
+
+2.Se implementa el RecyclerView el archivo de layout activity_main.xml
+
+3.Se agregan los iconos necesarios a la carpeta res/drawable
+Android drawable icons
+https://iconos8.es/icons/set/android
+
+4.Se crean los layout de cada uno de los items:
+
+            layout_one_kudos
+            layout_two_employee_msg
+
+5.Se define un Modelo de Datos: Se crea la clase que modeliza a los diferentes items a mostrar.
+
+6.Se crea la clase Adapter
+
+7.Se implementa el RecyclerView y los datos en la MainActivity
+
+8.ViewBinding
+
+    android {
+        buildFeatures {
+            viewBinding true
+        }
+    }
+
+9.Configuracion de Hilt
+
+    9.1.Archivo build.gradle del proyecto
+
+            buildscript {
+                dependencies {
+                    classpath "com.android.tools.build:gradle:7.2.1"
+
+                    // Hilt
+                    classpath "com.google.dagger:hilt-android-gradle-plugin:2.40.5"
+
+                    // NOTE: Do not place your application dependencies here; they belong
+                    // in the individual module build.gradle files
+                }
+            }
+
+
+    9.2.Archivo build.gradle modulo app
+
+            plugins {
+            	id 'kotlin-kapt'
+            	id 'dagger.hilt.android.plugin'
+            }
+
+            // Hilt
+            implementation "com.google.dagger:hilt-android:2.40.5"
+            kapt "com.google.dagger:hilt-compiler:2.40.5"
+
+    9.3.Creacion de la Application Class
